@@ -53,9 +53,9 @@ class AuthProvider extends Component {
       });
   }
 
-  handleSignup = ({ username, password, name, mail, years }) => {
+  handleSignup = ({ username, password, firstname, lastname }) => {
     apiClient
-      .signup({ username, password, name, mail, years })
+      .signup({ username, password, firstname, lastname })
       .then(({ data: user }) => {
         this.setState({
           isLoggedIn: true,

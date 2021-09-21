@@ -7,17 +7,16 @@ class SignUp extends Component {
   state = {
     username: "",
     password: "",
-    name: "",
-    mail: "",
-    years: 0,
+    firstName: "",
+    lastName: "",
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password, name, mail, years } = this.state;
+    const { username, password, firstName, lastName } = this.state;
     const { onSignup } = this.props;
-    if (username !== "" && password !== "" && mail !== "") {
-      onSignup({ username, password, name, mail, years });
+    if (username !== "" && password !== "") {
+      onSignup({ username, password, firstName, lastName  });
     }
   };
 
@@ -25,9 +24,8 @@ class SignUp extends Component {
     this.setState({
       username: "",
       password: "",
-      name: "",
-      mail: "",
-      years: 0,
+      firstName: "",
+      lastName: "",
     });
   };
 
@@ -38,7 +36,7 @@ class SignUp extends Component {
   };
 
   render() {
-    const { username, password, name, mail, years } = this.state;
+    const { username, password, firstName, lastName } = this.state;
 
     return (
       <div>
@@ -62,26 +60,18 @@ class SignUp extends Component {
           />
           <input
             type="text"
-            name="name"
-            id="name"
-            placeholder="name"
-            value={name}
+            name="firstName"
+            id="firstName"
+            placeholder="firstname"
+            value={firstName}
             onChange={this.handleChange}
           />
           <input
-            type="email"
-            name="mail"
-            id="mail"
-            placeholder="mail"
-            value={mail}
-            onChange={this.handleChange}
-          />
-          <input
-            type="number"
-            name="years"
-            id="years"
-            placeholder="years"
-            value={years}
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="lastname"
+            value={lastName}
             onChange={this.handleChange}
           />
           <input type="submit" value="submit" />
