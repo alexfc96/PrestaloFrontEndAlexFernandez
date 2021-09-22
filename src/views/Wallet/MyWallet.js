@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { Link } from "react-router-dom";
-// import Moment from 'react-moment';
 
 import apiWallet from "../../services/apiWallet";
-
 class MyWallet extends Component {
     state = {
       wallet: undefined,
@@ -41,7 +39,9 @@ class MyWallet extends Component {
     //   )
     }
   
-    getMWallet(){
+    getMyWallet(){
+      // const { user } = this.props;
+      
       apiWallet
       .getMyWallet()
       .then(({ data:wallet }) => {
