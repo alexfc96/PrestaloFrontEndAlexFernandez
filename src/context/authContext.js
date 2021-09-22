@@ -60,17 +60,17 @@ class AuthProvider extends Component {
         reject()
       }
     });
-
   }
 
-  handleSignup = ({ username, password, firstname, lastname }) => {
+  handleSignup = ({ username, password, firstName, lastName }) => {
     apiClient
-      .signup({ username, password, firstname, lastname })
+      .signup({ username, password, firstName, lastName })
       .then(({ data: user }) => {
         this.setState({
           isLoggedIn: true,
           user,
         });
+        this.handleLogin({username, password})
       })
       .catch((error) => {
         this.setState({
@@ -99,17 +99,11 @@ class AuthProvider extends Component {
   };
 
   handleLogout = () => {
-    apiClient
-      .logout()
-      .then(() => {
-        this.setState({
-          isLoggedIn: false,
-          user: null,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.setState({
+      isLoggedIn: false,
+      user: null,
+    });
+    localStorage.removeItem("userToken");
   };
 
   render() {

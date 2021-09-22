@@ -16,7 +16,7 @@ class SignUp extends Component {
     const { username, password, firstName, lastName } = this.state;
     const { onSignup } = this.props;
     if (username !== "" && password !== "") {
-      onSignup({ username, password, firstName, lastName  });
+      onSignup({ username, password, firstName, lastName });
     }
   };
 
@@ -39,44 +39,86 @@ class SignUp extends Component {
     const { username, password, firstName, lastName } = this.state;
 
     return (
-      <div>
-        <h1>SignUp</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
+      <form onSubmit={this.handleSubmit}>
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" 
+            placeholder="Username" 
             type="text"
             name="username"
             id="username"
             placeholder="username"
             value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
+            onChange={this.handleChange}/> 
+            
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="password" 
+            placeholder="Password" 
             name="password"
             id="password"
             placeholder="password"
             value={password}
             onChange={this.handleChange}
-          />
-          <input
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" 
+            placeholder="Firstname" 
             type="text"
             name="firstName"
             id="firstName"
-            placeholder="firstname"
+            placeholder="firstName"
             value={firstName}
-            onChange={this.handleChange}
-          />
-          <input
+            onChange={this.handleChange}/> 
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" 
+            placeholder="Lastname" 
             type="text"
             name="lastName"
             id="lastName"
-            placeholder="lastname"
+            placeholder="lastName"
             value={lastName}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="submit" />
-        </form>
-      </div>
+            onChange={this.handleChange}/> 
+            
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button class="button is-success" type="submit" value="submit">
+              Submit
+            </button>
+          </p>
+        </div>
+      </form>
     );
   }
 }
