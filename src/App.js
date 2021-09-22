@@ -21,7 +21,6 @@ class App extends Component {
             <Switch>
               <AnonRoute exact path={"/signup"} component={SignupWithAuth} />
               <AnonRoute exact path={"/login"} component={LoginWithAuth} />
-              <PrivateRoute exact path={"/protected"} component={Protected} />
               <PrivateRoute exact path={"/wallet/myWallet"} component={MyWallet} />
             </Switch>
           </div>

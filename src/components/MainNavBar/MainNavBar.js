@@ -31,15 +31,6 @@ class MainNavBar extends Component {
           <h1><Link to="/" className="">PRESTALO</Link></h1>
           <ul className="mainLinks">
             <li>
-              <Link to="/myCompanies" className="">My companies</Link>
-            </li>
-            <li>
-              <Link to="/myBookings" className="">My bookings</Link>
-            </li>
-            <li>
-              <Link to="/myProfile" className="">My profile</Link>
-            </li>
-            <li>
               <a onClick={onLogout}>Logout</a>
             </li>
           </ul>

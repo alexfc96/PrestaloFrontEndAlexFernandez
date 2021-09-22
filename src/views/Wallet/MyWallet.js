@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { Link } from "react-router-dom";
+import MyTransactions from "../Transaction/MyTransactions"
 
 import apiWallet from "../../services/apiWallet";
 class MyWallet extends Component {
@@ -12,9 +13,11 @@ class MyWallet extends Component {
       const { wallet } = this.state;
       return(
         <div className="showWallet">
-            <span>ID de la billetera: {wallet._id}</span>
+            <span>ID de la billetera: {wallet.id}</span>
+            <MyTransactions idWallet={wallet.id}></MyTransactions>
             {/* <Link to={`/establishment/${booking.idEstablishment._id}`}>{booking.idEstablishment.name}</Link> */}
             <hr/>
+
         </div>
       )
 
@@ -40,8 +43,6 @@ class MyWallet extends Component {
     }
   
     getMyWallet(){
-      // const { user } = this.props;
-      
       apiWallet
       .getMyWallet()
       .then(({ data:wallet }) => {
@@ -69,7 +70,7 @@ class MyWallet extends Component {
           {wallet == false &&
             <p> It seems that the wallet is not working fine </p>
           }
-          {wallet && this.showBookings() }
+          {wallet && this.showWallet() }
   
         </div>
       );

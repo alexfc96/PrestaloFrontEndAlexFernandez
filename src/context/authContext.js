@@ -35,8 +35,7 @@ class AuthProvider extends Component {
   };
 
   componentDidMount() {
-    apiClient
-      .whoami()
+    this.whoami()
       .then((user) => {
         this.setState({
           isLoading: false,
@@ -51,6 +50,17 @@ class AuthProvider extends Component {
           user: null,
         });
       });
+  }
+
+  whoami() {
+     return new Promise(function(resolve, reject) {
+      if(JSON.parse(localStorage.getItem('userToken'))){
+        resolve(JSON.parse(localStorage.getItem('userToken')));
+      } else {
+        reject()
+      }
+    });
+
   }
 
   handleSignup = ({ username, password, firstname, lastname }) => {
@@ -78,6 +88,7 @@ class AuthProvider extends Component {
           isLoggedIn: true,
           user,
         });
+        localStorage.setItem("userToken", JSON.stringify(user.token));
       })
       .catch((error) => {
         this.setState({
