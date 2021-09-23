@@ -24,8 +24,6 @@ class MyTransactions extends Component {
       return(
         <div>
           {transactions.map((transaction)=>{
-            console.log(transaction.walletId != walletId)
-            if(transaction.walletId != walletId ) { transaction.type = "receive" }
             return <div class="card" key={transaction.id}>
                 <header class="card-header">
                   <p class="card-header-title">
@@ -93,9 +91,9 @@ class MyTransactions extends Component {
     handleSendTransaction = (e) => {
         e.preventDefault()
         const { walletId, amount } = this.state;
-        
+        const { idWallet } = this.props;
         const type = "send";
-        const trans = { walletId, amount, type };
+        const trans = { walletId, amount, type, idWallet };
 
         apiTransactions
             .sendMoney(trans)
