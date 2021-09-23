@@ -18,29 +18,15 @@ class MainNavBar extends Component {
               <a class="navbar-item" href="https://prestalo.com/">
                 <img src="https://www.credilemon.com/img/logo/es/prestalo.png" width="112" height="28" />
               </a>
+            </div>
 
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+            <div class="buttons">
+              <a class="button is-primary">
+                <Link to="/signup"><strong>Signup</strong></Link>
               </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary">
-                      <Link to="/signup"><strong>Signup</strong></Link>
-                    </a>
-                    <a class="button is-light">
-                      <Link to="/login">Login</Link>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <a class="button is-light">
+                <Link to="/login">Login</Link>
+              </a>
             </div>
           </nav>
         }
@@ -53,16 +39,10 @@ class MainNavBar extends Component {
               </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-light" onClick={onLogout}>
+            <div class="buttons">
+                    <a class="button is-dark" onClick={onLogout}>
                       Logout
                     </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </nav>
         }

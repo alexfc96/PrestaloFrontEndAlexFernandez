@@ -20,20 +20,28 @@ class MyTransactions extends Component {
   
     showTransactions(){
       const { transactions } = this.state;
+      const { walletId } = this.state;
       return(
         <div>
-          <ul class="showWallet">
-             {transactions.map((transaction)=>{
-               return <li key={transaction.id}>
-                       <h3>Day: <Moment format='LL' date={transaction.createdDate} /></h3>
-                       <h2>ID: {transaction.id}</h2>
-                       <h2>Type: {transaction.type}</h2>
-                       <h2>Amount: {transaction.amount}</h2>
-                       <hr/>
-                     </li>
-             })
+          {transactions.map((transaction)=>{
+            console.log(transaction.walletId != walletId)
+            if(transaction.walletId != walletId ) { transaction.type = "receive" }
+            return <div class="card" key={transaction.id}>
+                <header class="card-header">
+                  <p class="card-header-title">
+                    <Moment format='LL' date={transaction.createdDate} />
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <span>Transaction ID: {transaction.id}</span><br />
+                    <span>Type: {transaction.type}</span><br />
+                    <span>Amount: {transaction.amount}</span>
+                  </div>
+                </div>
+              </div>
+              })
            }
-           </ul>
         </div>
       )
     }
@@ -85,6 +93,7 @@ class MyTransactions extends Component {
     handleSendTransaction = (e) => {
         e.preventDefault()
         const { walletId, amount } = this.state;
+        
         const type = "send";
         const trans = { walletId, amount, type };
 
@@ -134,17 +143,28 @@ class MyTransactions extends Component {
       const { transactions, sendModal } = this.state;
       return (
         <div>
-          <button class="button is-info" onClick={()=>{this.btnMoneyModal()}}>
-            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/send-money-36-1131476.png" width="18" height="20" />
-            SEND
-          </button>
+          <div>
+            <span style={{padding: ".75rem"}}>
+              <button class="button is-info btn-send-receive" onClick={()=>{this.btnMoneyModal()}}>
+                <img src="https://cdn-icons-png.flaticon.com/512/876/876776.png" width="22" height="26" /> 
+                 Send
+              </button>
+            </span>
+            <span style={{padding: ".75rem"}}>
+              <button class="button is-info btn-send-receive">
+                <img src="https://cdn-icons-png.flaticon.com/512/876/876772.png" width="22" height="26" />
+                Receive
+              </button>
+            </span>
+          </div><br />
+
           {sendModal && this.showSendModal() }
 
           <h1>My transactions:</h1>
           {transactions == false &&
             <p> It seems that you dont have transactions yet.</p>
           }
-          {transactions && this.showTransactions() }
+          {transactions && this.showTransactions() }<br />
         </div>
       );
     }

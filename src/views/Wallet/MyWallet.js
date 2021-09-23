@@ -13,9 +13,10 @@ class MyWallet extends Component {
       const { wallet } = this.state;
       return(
         <div className="showWallet">
-            <div>ID of my wallet: <br />
+            <h1>ID of my wallet:</h1>
               <strong>{wallet.id}</strong>
-            </div><br />
+            <br /><br />
+            <img src="/prestaloChart.png" style={{margin: "0.75rem"}}></img>
             <MyTransactions idWallet={wallet.id}></MyTransactions>
             <hr/>
 
